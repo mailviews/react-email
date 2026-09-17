@@ -1,6 +1,6 @@
 {
   "name": "@mailviews/react-email",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Base components, Tailwind setup and layout for Mailviews React Email components",
   "license": "MIT",
   "homepage": "https://mailviews.com",
@@ -23,20 +23,17 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "publishConfig": {
-    "access": "public",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.js",
-        "require": "./dist/index.cjs"
-      }
-    },
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts"
+    "access": "public"
   },
   "files": [
     "dist",
