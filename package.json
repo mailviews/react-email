@@ -3,6 +3,23 @@
   "version": "0.1.0",
   "description": "Base components, Tailwind setup and layout for Mailviews React Email components",
   "license": "MIT",
+  "homepage": "https://mailviews.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mailviews/react-email.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mailviews/react-email/issues"
+  },
+  "keywords": [
+    "react-email",
+    "email",
+    "html-email",
+    "tailwindcss",
+    "mailviews",
+    "maizzle",
+    "outlook"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
@@ -21,7 +38,11 @@
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts"
   },
-  "files": ["dist", "src", "LICENSE"],
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsup",
     "build:theme": "tsx scripts/build-theme.ts",
