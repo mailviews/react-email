@@ -75,11 +75,35 @@ import { mailviewsConfig, mailviewsTheme } from '@mailviews/react-email'
 | `VFill` | VML background image container for Outlook, with `image`, `width`, `height`, `color`, `position`, … |
 | `Outlook` | Wraps children (or `raw` HTML) in an `<!--[if mso]>` conditional. Target versions with `only`, `not`, `lt`, `lte`, `gt`, `gte`. |
 | `NotOutlook` | Wraps children in `<!--[if !mso]><!-->` so Outlook on Windows skips them. |
+| `Section` | Maizzle `<Section>`: a `<div>` plus an Outlook ghost table whose cell repeats the div's padding and background colour. Props `width`, `msoStyle`, `outlookFallback`. |
+| `Container` | Maizzle `<Container>`: centered `max-w-150` (600px) `<div>` plus a fixed-width, centered Outlook ghost table. Same props as `Section`. |
+| `Img` | Maizzle `<Img>`: `max-w-full align-middle`, `alt=""` by default, `src` resolved through `asset()`, optional `href` wrapper. |
+| `Link` | `<a>` that defaults to `no-underline`. |
+| `Hr` | Filled `<div>` rule (`my-6 bg-gray-300 h-px`), line-height follows height so Outlook sizes it. |
+| `Vml` | Outlook-only VML shape (`rect`, `roundrect`, `oval`, `line`) around the children; style the children with CSS for every other client. |
+| `OutlookBg` | VML background image for Outlook; pair it with a CSS background on the parent. |
 
 React cannot emit bare HTML comments, so `Outlook`, `NotOutlook` and `VFill` render their markers on a wrapper element chosen with `as` (`div`, `span`, `td`, `tr` or `p`). Use `raw` on `Outlook` for VML or ghost-table markup that must not go through Tailwind:
 
 ```tsx
 <Outlook as="span" raw={`<i hidden style="mso-font-width: 40%">&emsp;&#8203;</i>`} />
+```
+
+## Template kits
+
+Mailviews template kits (Atrium, …) ship a `react/` project built on this package. Their emails use the Maizzle layout components above (`Section`, `Container`, `Img`, `Link`, `Hr`, `Vml`, `OutlookBg`) with the same Tailwind classes as the Vue sources, so both flavors render the same HTML. Where a Maizzle component has no Outlook-specific markup, the kits use react-email's own components instead: `Html`, `Head`, `Body`, `Preview`, `Row` and `Column`.
+
+Brand tokens are added with `extendTheme()`, which returns the CSS to pass to `<Tailwind theme>` and registers the colours so `Section` and `Container` can paint their Outlook cells:
+
+```tsx
+import { Tailwind } from 'react-email'
+import { extendTheme, mailviewsConfig } from '@mailviews/react-email'
+
+const theme = extendTheme(`@theme { --color-brand-700: #7e1b47; }`)
+
+<Tailwind config={mailviewsConfig} theme={theme}>
+  ...
+</Tailwind>
 ```
 
 ## Assets

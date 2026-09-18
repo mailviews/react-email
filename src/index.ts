@@ -1,5 +1,6 @@
 export * from './base'
 export { MainLayout, type MainLayoutProps } from './layouts/MainLayout'
 export { mailviewsConfig, mailviewsTheme } from './lib/tailwind'
+export { extendTheme, getTheme, msoTdStyle, widthFromClass, spacingToPx, colorToCss, px } from './lib/tokens'
 export { asset, getAssetBase, setAssetBase } from './lib/asset'
 export { toStyle } from './lib/style'

@@ -1,6 +1,6 @@
 {
   "name": "@mailviews/react-email",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Base components, Tailwind setup and layout for Mailviews React Email components",
   "license": "MIT",
   "homepage": "https://mailviews.com",
